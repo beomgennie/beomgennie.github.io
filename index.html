@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gennie · Pharmacy Student</title>
+<meta name="description" content="Personal page of Gennie, a pharmacy student at Woosuk University — a simple record of activities beyond the classroom.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7FAF7;
+    --ink: #1C2B26;
+    --muted: #4A5C54;
+    --pine: #23604E;
+    --mint: #E1EFE7;
+    --sun: #EDBB4A;
+    --line: #CFDFD5;
+    --radius: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  a {
+    color: var(--pine);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+  a:hover { background: var(--mint); }
+  :focus-visible {
+    outline: 2px solid var(--pine);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ── capsule motif ───────────────────────────── */
+  .capsule {
+    display: inline-block;
+    width: 26px;
+    height: 13px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--pine) 0 50%, var(--sun) 50% 100%);
+    transform: rotate(-18deg);
+    flex: none;
+  }
+
+  /* ── header ──────────────────────────────────── */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 28px 0;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Spline Sans Mono", monospace;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .brand:hover { background: none; }
+  nav {
+    display: flex;
+    gap: 20px;
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  nav a { text-decoration: none; color: var(--muted); padding: 4px 2px; }
+  nav a:hover { color: var(--pine); background: none; }
+
+  /* ── hero ────────────────────────────────────── */
+  .hero { padding: 56px 0 64px; }
+  .hero .eyebrow {
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--pine);
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-family: "Young Serif", serif;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 7.5vw, 4rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+  .lede {
+    font-size: 1.13rem;
+    color: var(--muted);
+    max-width: 56ch;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 0;
+    list-style: none;
+  }
+  .chips li {
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: var(--pine);
+    background: var(--mint);
+    border-radius: 999px;
+    padding: 6px 14px;
+  }
+
+  /* load-in */
+  .hero > * { animation: rise 0.6s ease both; }
+  .hero > *:nth-child(2) { animation-delay: 0.08s; }
+  .hero > *:nth-child(3) { animation-delay: 0.16s; }
+  .hero > *:nth-child(4) { animation-delay: 0.24s; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero > * { animation: none; }
+  }
+
+  /* ── sections ────────────────────────────────── */
+  section {
+    border-top: 1px solid var(--line);
+    padding: 56px 0;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--pine);
+    margin-bottom: 28px;
+  }
+  .prose p { max-width: 62ch; }
+  .prose p + p { margin-top: 16px; }
+
+  /* ── activity records ────────────────────────── */
+  .record {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 8px 24px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+  .record:first-of-type { border-top: none; padding-top: 4px; }
+  .record .when {
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding-top: 5px;
+  }
+  .record h3 {
+    font-family: "Young Serif", serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .record .org {
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .record p { max-width: 60ch; }
+  .record .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 0;
+    list-style: none;
+  }
+  .record .tags li {
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    color: var(--pine);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 3px 11px;
+    background: #fff;
+  }
+
+  /* ── contact ─────────────────────────────────── */
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+  .contact-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+  }
+  .contact-list .label {
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    width: 72px;
+    flex: none;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0 48px;
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* ── mobile ──────────────────────────────────── */
+  @media (max-width: 600px) {
+    header { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .hero { padding: 40px 0 52px; }
+    section { padding: 44px 0; }
+    .record { grid-template-columns: 1fr; gap: 4px; }
+    .record .when { padding-top: 0; margin-bottom: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <a class="brand" href="#top"><span class="capsule" aria-hidden="true"></span>gennie</a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#activities">Activities</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top" style="border-top:none;">
+    <p class="eyebrow">Pharmacy student · Woosuk University</p>
+    <h1>Hi, I'm Gennie.</h1>
+    <p class="lede">I'm currently a pharmacy student at Woosuk University in Korea. This page is a simple record of what I've been up to outside the classroom — research, presentations, competitions, and other things I said yes to along the way.</p>
+    <ul class="chips" aria-label="Interests">
+      <li>Pharmacovigilance</li>
+      <li>Drug safety</li>
+      <li>FAERS data</li>
+      <li>Team projects</li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title"><span class="capsule" aria-hidden="true"></span>About</h2>
+    <div class="prose">
+      <p>Alongside my coursework at the College of Pharmacy, I've been getting involved in drug-safety research — analyzing real-world adverse event reports from the FDA's FAERS database — and joining campus competitions and programs whenever something interesting comes along.</p>
+      <p>I keep this page as a running log of those activities. It helps me see how the small things add up, and maybe it tells you a little about who I am.</p>
+    </div>
+  </section>
+
+  <section id="activities">
+    <h2 class="section-title"><span class="capsule" aria-hidden="true"></span>Activities</h2>
+
+    <!-- To add a new activity, copy one <article class="record"> block and edit it. -->
+
+    <article class="record">
+      <div class="when">Ongoing</div>
+      <div>
+        <h3>Pharmacovigilance research</h3>
+        <p class="org">Undergraduate research · Woosuk University College of Pharmacy</p>
+        <p>Working on adverse-event signal detection for GLP-1 receptor agonists and anti-obesity medications using the FDA Adverse Event Reporting System (FAERS), and co-authoring manuscripts for English-language journals.</p>
+        <ul class="tags"><li>FAERS</li><li>Disproportionality analysis</li><li>R</li></ul>
+      </div>
+    </article>
+
+    <article class="record">
+      <div class="when">2026</div> <!-- TODO: check date -->
+      <div>
+        <h3>Academic conference presentation</h3>
+        <p class="org">Co-authored with labmates</p>
+        <p>Presented our team's study on neuropsychiatric adverse events reported for FDA-approved anti-obesity medications, based on a disproportionality analysis of the FAERS database.</p>
+        <ul class="tags"><li>Conference</li><li>Drug safety</li></ul>
+      </div>
+    </article>
+
+    <article class="record">
+      <div class="when">2026</div> <!-- TODO: check dates -->
+      <div>
+        <h3>Campus competitions</h3>
+        <p class="org">Woosuk University</p>
+        <p>Entered several university contests with teammates — an AI-based study-method competition for pharmacotherapy, a CTL program review contest as part of an interdisciplinary pharmacy–nursing team, and a learning &amp; growth contest.</p>
+        <ul class="tags"><li>Competition</li><li>Teamwork</li></ul>
+      </div>
+    </article>
+
+    <article class="record">
+      <div class="when">2026</div> <!-- TODO: check date -->
+      <div>
+        <h3>Journal club presentation</h3>
+        <p class="org">Woosuk University College of Pharmacy</p>
+        <p>Led a journal-club session for pharmacy students and professors on GLP-1 receptor agonists and depressive disorders, walking through a published study and its causality assessment.</p>
+        <ul class="tags"><li>Presentation</li><li>Literature review</li></ul>
+      </div>
+    </article>
+
+    <article class="record">
+      <div class="when">2026</div> <!-- TODO: check date -->
+      <div>
+        <h3>Outreach for high school students</h3>
+        <p class="org">Volunteer activity</p>
+        <p>Introduced pharmacy school life and student activities to high school students who are curious about studying pharmacy.</p>
+        <ul class="tags"><li>Outreach</li><li>Mentoring</li></ul>
+      </div>
+    </article>
+
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title"><span class="capsule" aria-hidden="true"></span>Contact</h2>
+    <ul class="contact-list">
+      <li>
+        <span class="label">Email</span>
+        <a href="mailto:your.email@example.com">your.email@example.com</a> <!-- TODO: replace with your email -->
+      </li>
+      <li>
+        <span class="label">GitHub</span>
+        <a href="https://github.com/beomgennie">github.com/beomgennie</a>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <span class="capsule" aria-hidden="true"></span>
+    <span>© 2026 Gennie · Built with plain HTML on GitHub Pages</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
